@@ -1,4 +1,15 @@
 <div>
-  <app-display-swapi></app-display-swapi>
+  <div>
+    <h1>Star Wars API search</h1>
+    <form [formGroup]="searchSWAPI" (ngSubmit)=onSubmit()>
+      <input formControlName="value" type="search" required />
+      <select formControlName="search">
+        <option value="people">People</option>
+        <option value="starships">Starships</option>
+        <option value="films">Films</option>
+      </select>
+      <button [disabled]="searchSWAPI.value.search === null" type="submit">Submit</button>
+    </form>
+  </div>
+  <app-display-swapi *ngFor="let result of results" [swapi]='result'></app-display-swapi>
 </div>
-

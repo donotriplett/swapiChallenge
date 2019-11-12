@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from "@angular/forms"
+import { Component, OnInit, Input } from '@angular/core';
 import { FetchSWAPIService } from "../services/fetch-swapi.service"
 
 @Component({
@@ -8,20 +7,21 @@ import { FetchSWAPIService } from "../services/fetch-swapi.service"
   styleUrls: ['./display-swapi.component.css']
 })
 export class DisplaySWAPIComponent implements OnInit {
-  searchSWAPI: FormGroup;
-  results: any;
+  private _results: any;
 
-  constructor(private _fb: FormBuilder ,private _dbService: FetchSWAPIService) { }
+  @Input()
+  set swapi(res: any) {
+    this._results = res
+  }
+  
+  get swapi(): any {
+    return this._results
+  }
+
+  constructor() { }
 
   ngOnInit() {
-    this.searchSWAPI = this._fb.group({
-      value: new FormControl(),
-      search: new FormControl()
-    })
   }
 
-  onSubmit(): void {
-    this._dbService.fetchStarWars(this.searchSWAPI.value.search, this.searchSWAPI.value.value).subscribe(res => console.log(res))
-  }
 
 }
