@@ -8,19 +8,23 @@ import { FetchSWAPIService } from "../services/fetch-swapi.service"
 })
 export class DisplaySWAPIComponent implements OnInit {
   private _results: any;
+  private _type: string;
 
   @Input()
-  set swapi(res: any) {
-    this._results = res
+  set swapi(res: any, ) {
+    this._results = res.results[0];
+    this._type = res.type;
   }
+
   
   get swapi(): any {
-    return this._results
+    return (this._results, this._type)
   }
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this._results, this._type)
   }
 
 

@@ -9,7 +9,7 @@ import { FetchSWAPIService } from "./services/fetch-swapi.service"
 })
 export class AppComponent implements OnInit {
   searchSWAPI: FormGroup;
-  results: any;
+  props: object[] = [{results: null}, {type: null}]
 
   constructor(private _fb: FormBuilder ,private _dbService: FetchSWAPIService) {}
 
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this._dbService.fetchStarWars(this.searchSWAPI.value.search, this.searchSWAPI.value.value).subscribe(res => this.results = res.results)
+    this._dbService.fetchStarWars(this.searchSWAPI.value.search, this.searchSWAPI.value.value).subscribe(res =>{this.props.type = this.searchSWAPI.value.search ; this.props.results = res.results})
   }
 
 }

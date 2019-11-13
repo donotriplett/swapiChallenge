@@ -1,3 +1,23 @@
 <div>
-    <p>{{_results | json}}</p>
+    <ul *ngIf="_type === 'people'">
+        <li>name: {{_results.name}}</li>
+        <li>mass: {{_results.mass}}</li>
+        <li>gender: {{_results.gender}}</li>
+        <li>year born: {{_results.birth_year}}</li>
+        <li>homeworld: {{_results.homeworld}}</li>
+    </ul>
+    <ul *ngIf="_type === 'starships'">
+        <li>name: {{_results.name}}</li>
+        <li>model: {{_results.model}}</li>
+        <li>manufacturer: {{_results.manufacturer}}</li>
+        <li>max speed: {{_results.max_atmosphering_speed}}</li>
+        <li>cost in credits: {{_results.cost_in_credits}}</li>
+    </ul>
+    <ul *ngIf="_type === 'films'">
+        <li>title: {{_results.title}}</li>
+        <li>movie number: {{_results.episode_id}}</li>
+        <li>release date: {{_results.release_date}}</li>
+        <li>producers: {{_results.producer}}</li>
+        <li>{{_results.opening_crawl}}</li>
+    </ul>
 </div>

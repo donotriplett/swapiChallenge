@@ -11,5 +11,5 @@
       <button [disabled]="searchSWAPI.value.search === null" type="submit">Submit</button>
     </form>
   </div>
-  <app-display-swapi *ngFor="let result of results" [swapi]='result'></app-display-swapi>
+  <app-display-swapi *ngFor="let result of props.results" [swapi]='props'></app-display-swapi>
 </div>
