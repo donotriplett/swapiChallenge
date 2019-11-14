@@ -9,7 +9,7 @@ import { FetchSWAPIService } from "./services/fetch-swapi.service"
 })
 export class AppComponent implements OnInit {
   searchSWAPI: FormGroup;
-  props: object[] = [{results: null}, {type: null}]
+  props: any = [{results: null}, {type: null}]
 
   constructor(private _fb: FormBuilder ,private _dbService: FetchSWAPIService) {}
 

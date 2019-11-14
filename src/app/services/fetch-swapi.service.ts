@@ -17,7 +17,7 @@ private _dbURL = "https://swapi.co/api"
 
   constructor(private _http: HttpClient) { }
 
-  fetchStarWars(search, value): Observable<{}> {
+  fetchStarWars(search, value): Observable<any> {
     return this._http.get(`${this._dbURL}/${search}/?search=${value}`)
   }
 
